@@ -1,21 +1,14 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### Descrição ###
+
+* Aplicação Windows Forms (com MVC) desenvolvida por grupo de Projeto Aplicado da turma de 17/01 (Ciclo 2 Módulo A) de Análise e Desenvolvimento de Sistemas da UNA (campus Barro Preto). A solução foi desenvolvida com base nos requisitos obtidos com uma corretora real de algodão e o objetivo era ser uma solução real.
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Dependencies: requer Framework BUNIFU UI e [libsodium-net](https://github.com/adamcaudill/libsodium-net)
 
 ### Contribution guidelines ###
 
