@@ -60,7 +60,7 @@ namespace Sistemacottonfix
 
         private void btentrar_Click(object sender, EventArgs e)
         {
-			Tuple<ulong, ulong?, string> result = new Tuple<ulong, ulong?, string>(0, null, String.Empty);
+	    Tuple<ulong, ulong?, string> result = new Tuple<ulong, ulong?, string>(0, null, String.Empty);
             try
             {
                 using (Conexao.GetInstance)
@@ -86,21 +86,21 @@ namespace Sistemacottonfix
             }
             else
             {
-				MessageBox.Show(result.ToString());
-				lbsenha.Visible = false;
-				lbusuario.Visible = false;
-				user.Visible = false;
-				senha.Visible = false;
-				pbload2.Visible = true;
-				btnEntrar.Visible = false;
-				timerload.Enabled = true; // Enable the timer.
-				timerload.Start();
-				timerload.Interval = 250; // The time per tick.
-				pbload2.MaximumValue = 6;
-				timerload.Tick += new EventHandler(timerload_Tick);
-				lbversao.Text = "Versão Alfa 0.1";
-				pbload2.ForeColor = Color.FromArgb(190, 184, 81);
-				frmprincipal formprincipal = new frmprincipal();            
+		MessageBox.Show(result.ToString());
+		lbsenha.Visible = false;
+		lbusuario.Visible = false;
+		user.Visible = false;
+		senha.Visible = false;
+		pbload2.Visible = true;
+		btnEntrar.Visible = false;
+		timerload.Enabled = true; // Enable the timer.
+		timerload.Start();
+		timerload.Interval = 250; // The time per tick.
+		pbload2.MaximumValue = 6;
+		timerload.Tick += new EventHandler(timerload_Tick);
+		lbversao.Text = "Versão Alfa 0.1";
+		pbload2.ForeColor = Color.FromArgb(190, 184, 81);
+		frmprincipal formprincipal = new frmprincipal();            
             }
         }
     }
