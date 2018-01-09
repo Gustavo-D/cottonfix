@@ -59,34 +59,33 @@ namespace Sistemacottonfix
         }
         private void btentrar_Click(object sender, EventArgs e)
         {
-            //Tuple<ulong, ulong?, string> result = new Tuple<ulong, ulong?, string>(0, null, String.Empty);
-
-            //try
-            //{
-            //    using (Conexao.GetInstance)
-            //    {
-            //        Conexao.Abrir();
-            //        ICRUD<Usuario> ControllerUsuario = new CtrlUsuario(Conexao.GetInstance);
-            //        Usuario ModelUsuario = new Usuario();
-            //        ModelUsuario.Login = user.Text;
-            //        ModelUsuario.Senha = senha.Text;
-            //        Login login = new Login(ModelUsuario);
-            //        result = login.logar(login);
-            //        ModelUsuario.IdUsuario = Convert.ToInt32(result.Item1);
-            //        Conexao.Fechar();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            //if (result.Item1 == 0) //88 retorno 0 e invalido, item1 == IdUsuario
-            //{
-            //    MessageBox.Show("Usuário ou senha inválidos. Tente novamente.");
-            //}
-            //else
-            //{
-            //MessageBox.Show(result.ToString());
+            Tuple<ulong, ulong?, string> result = new Tuple<ulong, ulong?, string>(0, null, String.Empty);
+            try
+            {
+                using (Conexao.GetInstance)
+                {
+                    Conexao.Abrir();
+                    ICRUD<Usuario> ControllerUsuario = new CtrlUsuario(Conexao.GetInstance);
+                    Usuario ModelUsuario = new Usuario();
+                    ModelUsuario.Login = user.Text;
+                    ModelUsuario.Senha = senha.Text;
+                    Login login = new Login(ModelUsuario);
+                    result = login.logar(login);
+                    ModelUsuario.IdUsuario = Convert.ToInt32(result.Item1);
+                    Conexao.Fechar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            if (result.Item1 == 0) //retorno 0 é invalido, item1 == IdUsuario
+            {
+                MessageBox.Show("Usuário ou senha inválidos. Tente novamente.");
+            }
+            else
+            {
+            MessageBox.Show(result.ToString());
             lbsenha.Visible = false;
             lbusuario.Visible = false;
             user.Visible = false;
@@ -101,7 +100,7 @@ namespace Sistemacottonfix
             lbversao.Text = "Versão Alfa 0.1";
             pbload2.ForeColor = Color.FromArgb(190, 184, 81);
             frmprincipal formprincipal = new frmprincipal();            
-            //}
+            }
         }
         private void lbversao_Click(object sender, EventArgs e)
         {
