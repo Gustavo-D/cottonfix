@@ -60,25 +60,47 @@ namespace Sistemacottonfix
 
         private void btentrar_Click(object sender, EventArgs e)
         {
-            string senha;
-            senha = txtsenha.Text;
-
-            if (senha == "1234")
+			Tuple<ulong, ulong?, string> result = new Tuple<ulong, ulong?, string>(0, null, String.Empty);
+            try
             {
-                dpusuario.Visible = false;
-                lbsenha.Visible = false;
-                lbusuario.Visible = false;
-                txtsenha.Visible = false;
-                pbload2.Visible = true;
-                btentrar.Visible = false;
-                timerload.Enabled = true; // Enable the timer.
-                timerload.Start();//Strart it
-                timerload.Interval = 1000; // The time per tick.
-                pbload2.MaximumValue = 6;
-                timerload.Tick += new EventHandler(timerload_Tick);
-                lbversao.Text = "Versão Alfa 0.1";
-                pbload2.ForeColor = Color.FromArgb(190, 184, 81);
-                frmprincipal formprincipal = new frmprincipal();
+                using (Conexao.GetInstance)
+                {
+                    Conexao.Abrir();
+                    ICRUD<Usuario> ControllerUsuario = new CtrlUsuario(Conexao.GetInstance);
+                    Usuario ModelUsuario = new Usuario();
+                    ModelUsuario.Login = user.Text;
+                    ModelUsuario.Senha = senha.Text;
+                    Login login = new Login(ModelUsuario);
+                    result = login.logar(login);
+                    ModelUsuario.IdUsuario = Convert.ToInt32(result.Item1);
+                    Conexao.Fechar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            if (result.Item1 == 0)
+            {
+                MessageBox.Show("Usuário ou senha inválidos. Tente novamente.");
+            }
+            else
+            {
+				MessageBox.Show(result.ToString());
+				lbsenha.Visible = false;
+				lbusuario.Visible = false;
+				user.Visible = false;
+				senha.Visible = false;
+				pbload2.Visible = true;
+				btnEntrar.Visible = false;
+				timerload.Enabled = true; // Enable the timer.
+				timerload.Start();
+				timerload.Interval = 250; // The time per tick.
+				pbload2.MaximumValue = 6;
+				timerload.Tick += new EventHandler(timerload_Tick);
+				lbversao.Text = "Versão Alfa 0.1";
+				pbload2.ForeColor = Color.FromArgb(190, 184, 81);
+				frmprincipal formprincipal = new frmprincipal();            
             }
         }
     }
